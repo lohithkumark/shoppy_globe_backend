@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const connectDB = require("./config/db");
 const productRoutes = require("./routes/product.routes");
+const authRoutes = require("./routes/auth.routes");
 
 const app = express();
 
@@ -10,6 +11,8 @@ connectDB();
 app.use(express.json());
 
 app.use("/products", productRoutes);
+
+app.use("/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("ShoppyGlobe Backend Running 🚀");
